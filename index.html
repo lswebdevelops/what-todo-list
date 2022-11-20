@@ -16,14 +16,22 @@
 <h2>My Projects</h2>
 <hr>
 <h2>My Tasks</h2>
- 
-    <input type="text" id="title" placeholder="title" value="Supermarket"> 
-    <input type="text" id="description" placeholder="description" value="buy detergent">   
+<select name="Tasks" id="title" >
+    <option value="Grocery Shopping">Grocery Shopping</option>
+    <option value="Car">Car</option>
+    <option value="Garden" selected>Garden</option>
+    <option value="School">School</option>
+    <option value="University">University</option>
+    <option value="Work">Work</option>
+    <option value="Other">Other</option>
+
+  </select>
+  <input type="text" id="description" placeholder="add a description" >   
     <input type="date" id="dueDate" placeholder="dueDate" value="2022-11-19">   
     <br>
     <button type=submit class="btnAddTask" onclick="addTask()"> Add Elements </button>  
     <h4 id="content"> </h4>  
 
-   
+
 </body>
 </html>
