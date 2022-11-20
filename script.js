@@ -1,6 +1,5 @@
 let myProjects = [];
 let newProject;
-
 class Project {
   constructor(title) {
       this.title = title; 
@@ -19,12 +18,11 @@ function addProj(){
  
   addProjToMyProjects(inputTitleOfProj);
 }
-
- //printing the projects to the screen
-
- const contentProj = document.getElementById('contentProj');
+//printing the projects to the screen
+const contentProj = document.getElementById('contentProj');
 
  function createElementsForProjPrinting(){
+  // delete content of screen so it woun't repeat
   deleteContentofProj()
       function addParagraph(title){
       const titleLabel = document.createElement('p')
@@ -36,10 +34,8 @@ function addProj(){
             let test = myProjects[i]
             addParagraph(myProjects[i].title );
          
-
-              console.log(myProjects);
           }
-          console.log(" ")
+         
 
         
 }
@@ -64,11 +60,7 @@ function deleteContentofProj(){
  
 }
 
-
-
 // adding tasks: 
-
-
 let myTasks = [];
 let newTask;
 // console.log(newTask);
@@ -86,26 +78,19 @@ function addTaskToMyTasks(title, description, dueDate){
   
   // console.log(newTask);
 }
-// adding a new book to collection manually for testing(erase after project ready)
-// addTaskToMyTasks("supermarket", 'buy xampu','2022-11-11')
-// addTaskToMyTasks("supermarket2", 'buy xampu2','2022-11-12')
-// adding a new book to collection from inputs
+
 function addTask(){
   const inputTitle = document.getElementById("title").value;
   const inputDescription = document.getElementById("description").value;
   const inputDueDate = document.getElementById("dueDate").value;
 addTaskToMyTasks(inputTitle, inputDescription, inputDueDate);
- //printing the tasks to the console:
-// for (let i in myTasks){
-//   console.log(myTasks[i]);
-  
-// }
-// console.log(" ")
+
 }
  //printing the tasks to the screen
  const content = document.getElementById('content');
  function createElementsForTaskPrinting(){
-  deleteContent()
+  // delete content of screen so it woun't repeat
+   deleteContent()
       function addParagraph(title, description, dueDate){
       const titleLabel = document.createElement('p')
       titleLabel.textContent = `${title}: ${description}, ! ${dueDate}`
@@ -115,10 +100,9 @@ addTaskToMyTasks(inputTitle, inputDescription, inputDueDate);
            for (let i in myTasks){
             let test = myTasks[i]
             addParagraph(myTasks[i].title, myTasks[i].description,myTasks[i].dueDate );
-         
-              console.log(myTasks);
-          }
-          console.log(" ")
+                    
+}
+   
         
 }
 let buttonAddTaskEvent = document.querySelector('.btnAddTask').addEventListener('click', buttonAddTask);

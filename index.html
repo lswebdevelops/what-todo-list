@@ -7,10 +7,10 @@
     <link rel="icon" type="image/png" href="./images/lsfavicon.png">
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo List</title>
+    <title>What-Todo List</title>
 </head>
 <body>
-<h1>Todo List</h1>
+<h1>What-Todo List</h1>
 
 <hr>
 <h2>My Projects</h2>
@@ -20,20 +20,11 @@
 <button type=submit class="btnAddProj" onclick="addProj()"> + Add Project</button>  
 <h4 id="contentProj"></h4>  
 
-
 <hr>
 <h2>My Tasks</h2>
-<select name="Tasks" id="title" >
-    <option value="Grocery Shopping">Grocery Shopping</option>
-    <option value="Car">Car</option>
-    <option value="Garden" selected>Garden</option>
-    <option value="School">School</option>
-    <option value="University">University</option>
-    <option value="Work">Work</option>
-    <option value="Other">Other</option>
-
-  </select>
+  <input type="text" id="title"  placeholder="add a task title" >   
   <input type="text" id="description" placeholder="add a description" >   
+  
     <input type="date" id="dueDate" placeholder="dueDate" value="2022-11-19">   
     <br>
 <br>
