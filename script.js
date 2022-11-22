@@ -2,20 +2,13 @@
 const addBtn = document.querySelector('#addBtn');
 addBtn.addEventListener('click', addTaskToTasks);
 
-const newTaskBtn = document.querySelector('#newBtn');
-newTaskBtn.addEventListener('click', () => popUpForm.style.display = 'block');
-
-const popUpForm = document.getElementById('popUp');
-const closePopUp = document.getElementsByTagName('span')[0];
-closePopUp.addEventListener('click', () => popUpForm.style.display = 'none');
-
 //Task Constructor
 class Task {
     constructor(title, description, dueDate, done) {
-        this.title = form.title.value; 
-        this.description = form.description.value; 
-        this.dueDate = form.dueDate.value; 
-        this.done = form.done.checked; 
+      this.title = form.title.value;          
+      this.description = form.description.value; 
+      this.dueDate = form.dueDate.value; 
+      this.done = form.done.checked; 
     }
 }
 
@@ -26,28 +19,32 @@ let newTask;
 
 function addTaskToTasks(){
     event.preventDefault();
-    popUpForm.style.display= "none";
-
     newTask = new Task(title, description, dueDate, done);
+  if(newTask.title ==='' || newTask.description === '' || newTask.dueDate === ''){
+    alert("Please type required info!")
+  }
+  else{
     myTasks.push(newTask);
     render();
     form.reset();
+  }
+   
 }
 
 //creates a visual task
 function render(){
     const display = document.getElementById('Task-container');
-    const books = document.querySelectorAll('.task');
-    books.forEach(task => display.removeChild(task));
+    const tasks = document.querySelectorAll('.task');
+    tasks.forEach(task => display.removeChild(task));
 
     for (let i=0; i<myTasks.length; i++){
-        createBook(myTasks[i]);
+      createTask(myTasks[i]);
     }
 }
 
 // creates task DOM elements for rendering
 
-function createBook(item) {
+function createTask(item) {
     const tasks = document.querySelector('#Task-container');
     const taskDiv = document.createElement('div');
     const titleDiv = document.createElement('div');
