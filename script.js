@@ -1,6 +1,6 @@
 //button event listeners for create new task, add new task to page, close popup
 const addBtn = document.querySelector('#addBtn');
-addBtn.addEventListener('click', addTaskkToTasks);
+addBtn.addEventListener('click', addTaskToTasks);
 
 const newTaskBtn = document.querySelector('#newBtn');
 newTaskBtn.addEventListener('click', () => popUpForm.style.display = 'block');
@@ -19,12 +19,12 @@ class Task {
     }
 }
 
-//creates task from Task Constructor, adds to mytasks
+//creates task from Task Constructor, adds to myTasks
 
 let myTasks = [];
 let newTask;
 
-function addTaskkToTasks(){
+function addTaskToTasks(){
     event.preventDefault();
     popUpForm.style.display= "none";
 

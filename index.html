@@ -17,19 +17,17 @@
         
     </div>
    
-    
+
      <div id="popUp">
         <form id='form' action='/Script.js'>
             <span class="close">&times;</span>
             <ledgend>New Task</ledgend>
             <div id='textInput'> 
-                <p><input type='text' id='title' maxlength="40" name='title' placeholder='Title'></p>
-                <p><input type='text' id='description'  maxlength="40" name='description' placeholder='Description'></p>
+                <p><input type='text' id='title' maxlength="40" name='title' placeholder='Title' ></p>
+                <p><input type='text' id='description'  maxlength="40" name='description' placeholder='Description' ></p>
                 <p>
                 <!--  using js to set the maximum length of numbers of pages per book -->
-             <input name="dueDate"  oninput="javascript: if (this.value.length > 
-             this.maxLength) this.value = this.value.slice(0, this.maxLength);" 
-             type = "date"  maxlength = "12" id='dueDate' name='dueDate' placeholder='dueDate'/></p>
+             <input  name="dueDate" type = "date" id='dueDate' placeholder='dueDate'/></p>
             </div>
             <div id='checkBox'>
                 <p><label >Done: </label><input type='checkbox' id='done' name='done' value='yes'></p>
