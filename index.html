@@ -3,34 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <script src="script.js" defer></script>
-    <link rel="icon" type="image/png" href="./images/lsfavicon.png">
-    <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What-Todo List</title>
+    <script src="https://kit.fontawesome.com/8e7c30ddfb.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="images/lsfavicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Todo List</title>
 </head>
 <body>
-<h1>What-Todo List</h1>
+    <h1>Todo List</h1>
+      <div id='newBtn-Container'>
+        <button id='newBtn'>+ New Task</button>
+        
+    </div>
+  
+     <div id="popUp">
+        <form id='form' action='/Script.js'>
+            <span class="close">&times;</span>
+            <ledgend>New Task</ledgend>
+            <div id='textInput'> 
+                <p><input type='text' id='title' maxlength="40" name='title' placeholder='Title'></p>
+                <p><input type='text' id='description'  maxlength="40" name='description' placeholder='Description'></p>
+                <p>
+                <!--  using js to set the maximum length of numbers of pages per book -->
+             <input name="dueDate"  oninput="javascript: if (this.value.length > 
+             this.maxLength) this.value = this.value.slice(0, this.maxLength);" 
+             type = "date"  maxlength = "12" id='dueDate' name='dueDate' placeholder='dueDate'/></p>
+            </div>
+            <div id='checkBox'>
+                <p><label >Done: </label><input type='checkbox' id='done' name='done' value='yes'></p>
+            </div>
+            <button type='submit' form='form' id='addBtn'>Add</button>
+        </form>
+    </div>
+    <div id='Task-container'></div>
 
-<hr>
-<h2>My Projects</h2>
-<input type="text" id="titleOfProj" placeholder="add a project name" >   
-<br>
-<br>
-<button type=submit class="btnAddProj" onclick="addProj()"> + Add Project</button>  
-<h4 id="contentProj"></h4>  
-
-<hr>
-<h2>My Tasks</h2>
-  <input type="text" id="title"  placeholder="add a task title" >   
-  <input type="text" id="description" placeholder="add a description" >   
-  <input type="date" id="dueDate" placeholder="dueDate" value="2022-11-19">   
-    <br>
-<br>
-
-    <button type=submit class="btnAddTask" onclick="addTask()"> Add Elements </button>  
-    <h4 id="content"> </h4>  
-
-
+ 
+   </div><!-- end allContainer -->
+  
+   <div class="footer">
+    <p class="info">Copyright © 2022 LS-Web Development 
+        <a href="https://github.com/lswebdevelops/todo-list" target="_blank">
+            <i class="fa-brands fa-github fa-1x"></i></a> </p>
+</div><!-- end footer -->
+  
 </body>
 </html>

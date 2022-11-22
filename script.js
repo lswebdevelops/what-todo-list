@@ -1,124 +1,104 @@
-let myProjects = [];
-let newProject;
-class Project {
-  constructor(title) {
-      this.title = title; 
-  }
-}
-function addProjToMyProjects(title){
-  
-  newProject = new Project(title);
-  myProjects.push(newProject);
-  
+//button event listeners for create new task, add new task to page, close popup
+const addBtn = document.querySelector('#addBtn');
+addBtn.addEventListener('click', addTaskkToTasks);
 
-}
+const newTaskBtn = document.querySelector('#newBtn');
+newTaskBtn.addEventListener('click', () => popUpForm.style.display = 'block');
 
-function addProj(){
-  const inputTitleOfProj = document.getElementById("titleOfProj").value;
- 
-  addProjToMyProjects(inputTitleOfProj);
-}
-//printing the projects to the screen
-const contentProj = document.getElementById('contentProj');
+const popUpForm = document.getElementById('popUp');
+const closePopUp = document.getElementsByTagName('span')[0];
+closePopUp.addEventListener('click', () => popUpForm.style.display = 'none');
 
- function createElementsForProjPrinting(){
-  // delete content of screen so it woun't repeat
-  deleteContentofProj()
-      function addParagraph(title){
-      const titleLabel = document.createElement('p')
-      titleLabel.textContent = `${title}`
-      contentProj.appendChild(titleLabel);
-           }
-                               
-           for (let i in myProjects){
-            let test = myProjects[i]
-            addParagraph(myProjects[i].title );
-         
-          }
-         
-
-        
-}
-let buttonAddProjEvent = document.querySelector('.btnAddProj').addEventListener('click', buttonAddProj);
-
-function buttonAddProj(){
-  createElementsForProjPrinting();
-
-}
-
-function deleteContentofProj(){
-  // delete all below id='contentProj' when a button add Add Project is clicked
-  function empty(element) {
-    while(element.firstElementChild) {
-       element.firstElementChild.remove();
+//Task Constructor
+class Task {
+    constructor(title, description, dueDate, done) {
+        this.title = form.title.value; 
+        this.description = form.description.value; 
+        this.dueDate = form.dueDate.value; 
+        this.done = form.done.checked; 
     }
-    
-  }
-  
-  let parentProf = document.getElementById("contentProj");
-  empty(parentProf);
- 
 }
 
-// adding tasks: 
+//creates task from Task Constructor, adds to mytasks
+
 let myTasks = [];
 let newTask;
-// console.log(newTask);
-class Task {
-  constructor(title, description, dueDate) {
-      this.title = title; 
-      this.description = description; 
-      this.dueDate = dueDate; 
-  }
-}
-function addTaskToMyTasks(title, description, dueDate){
-  
-  newTask = new Task(title, description, dueDate);
-  myTasks.push(newTask);
-  
-  // console.log(newTask);
+
+function addTaskkToTasks(){
+    event.preventDefault();
+    popUpForm.style.display= "none";
+
+    newTask = new Task(title, description, dueDate, done);
+    myTasks.push(newTask);
+    render();
+    form.reset();
 }
 
-function addTask(){
-  const inputTitle = document.getElementById("title").value;
-  const inputDescription = document.getElementById("description").value;
-  const inputDueDate = document.getElementById("dueDate").value;
-addTaskToMyTasks(inputTitle, inputDescription, inputDueDate);
+//creates a visual task
+function render(){
+    const display = document.getElementById('Task-container');
+    const books = document.querySelectorAll('.task');
+    books.forEach(task => display.removeChild(task));
 
-}
- //printing the tasks to the screen
- const content = document.getElementById('content');
- function createElementsForTaskPrinting(){
-  // delete content of screen so it woun't repeat
-   deleteContent()
-      function addParagraph(title, description, dueDate){
-      const titleLabel = document.createElement('p')
-      titleLabel.textContent = `${title}: ${description}, ! ${dueDate}`
-      content.appendChild(titleLabel);
-           }
-                               
-           for (let i in myTasks){
-            let test = myTasks[i]
-            addParagraph(myTasks[i].title, myTasks[i].description,myTasks[i].dueDate );
-                    
-}
-   
-        
-}
-let buttonAddTaskEvent = document.querySelector('.btnAddTask').addEventListener('click', buttonAddTask);
-function buttonAddTask(){
-  createElementsForTaskPrinting();
-}
-function deleteContent(){
-  // delete all below id='content' when a button add Task clicked
-  function empty(element) {
-    while(element.firstElementChild) {
-       element.firstElementChild.remove();
+    for (let i=0; i<myTasks.length; i++){
+        createBook(myTasks[i]);
     }
-    
-  }
-  
-  let parent = document.querySelector("#content");
-  empty(parent);
- 
 }
+
+// creates task DOM elements for rendering
+
+function createBook(item) {
+    const tasks = document.querySelector('#Task-container');
+    const taskDiv = document.createElement('div');
+    const titleDiv = document.createElement('div');
+    const descriptionDiv = document.createElement('div');
+    const dueDateDiv = document.createElement('div');
+    const removeBtn = document.createElement('button');
+    const doneBtn = document.createElement('button');
+    
+    
+    taskDiv.classList.add('task');
+    taskDiv.setAttribute('id', myTasks.indexOf(item));
+
+    titleDiv.textContent = item.title;
+    titleDiv.classList.add('title');
+    taskDiv.appendChild(titleDiv);
+
+    descriptionDiv.textContent = item.description;
+    descriptionDiv.classList.add('description');
+    taskDiv.appendChild(descriptionDiv);
+
+    dueDateDiv.textContent = item.dueDate;
+    dueDateDiv.classList.add('dueDate');
+    taskDiv.appendChild(dueDateDiv);
+
+    doneBtn.classList.add('doneBtn')    
+    taskDiv.appendChild(doneBtn);
+    if(item.done===false){
+        doneBtn.textContent = 'Not done';
+        doneBtn.style.backgroundColor = 'hsl(0deg 100% 81%)';
+    }else{
+        doneBtn.textContent = 'Done';
+        doneBtn.style.backgroundColor = 'hsl(118deg 100% 81%)' ;
+    }
+		
+
+    removeBtn.textContent = 'Remove'; 
+    removeBtn.setAttribute('id', 'removeBtn');
+    taskDiv.appendChild(removeBtn);
+    
+    tasks.appendChild(taskDiv);
+
+    removeBtn.addEventListener('click', () => {
+        myTasks.splice(myTasks.indexOf(item),1);
+      //  setData()
+        render();
+    });
+
+    //add toggle ability to each task 'done' button on click
+    doneBtn.addEventListener('click', () => { 
+        item.done = !item.done; 
+   //     setData(); 
+        render();
+    }); 
+};
