@@ -20,8 +20,13 @@ let newTask;
 function addTaskToTasks(){
     event.preventDefault();
     newTask = new Task(title, description, dueDate, done);
-  if(newTask.title ==='' || newTask.description === '' || newTask.dueDate === ''){
-    alert("Please type required info!")
+    //prevent users from creating an empty task:
+  if(newTask.title ==='' ||newTask.title ===' ' ){
+    alert("Please type a valid title")
+  }else if( newTask.description === '' ||newTask.description === ' ' ){
+    alert("Please type a valid description" );
+  }else if(newTask.dueDate === '' || newTask.dueDate === ' '){
+    alert("Please give a date");
   }
   else{
     myTasks.push(newTask);
@@ -80,7 +85,7 @@ function createTask(item) {
     }
 		
 
-    removeBtn.textContent = 'Remove'; 
+    removeBtn.textContent = 'X'; 
     removeBtn.setAttribute('id', 'removeBtn');
     taskDiv.appendChild(removeBtn);
     
@@ -99,3 +104,96 @@ function createTask(item) {
         render();
     }); 
 };
+
+
+// **********************************************************************
+
+// adding project 
+
+
+//button event listeners for create new task, add new task to page, close popup
+const addBtnProj = document.querySelector('#addBtnProj');
+addBtnProj.addEventListener('click', addProjToProjects);
+
+//Task Constructor
+class Project {
+    constructor(titleP) {
+      this.titleP = formProj.titleP.value;          
+      }
+}
+
+//creates task from Task Constructor, adds to myTasks
+
+let myProjects = [];
+let newProject;
+
+function addProjToProjects(){
+    event.preventDefault();
+    newProject = new Project(titleP);
+    //prevent users from creating an empty task:
+  if(newProject.titleP ==='' ||newProject.titleP ===' ' ){
+    alert("Please type a valid project title")
+  }
+  else{
+    myProjects.push(newProject);
+    renderProj();
+    
+  }
+   
+}
+
+//creates a visual task
+function renderProj(){
+    const display = document.getElementById('Proj-container');
+    const projects = document.querySelectorAll('.project');
+    projects.forEach(project => display.removeChild(project));
+
+    for (let i=0; i<myProjects.length; i++){
+      createProject(myProjects[i]);
+    }
+}
+
+// creates task DOM elements for rendering
+
+function createProject(item) {
+    const projects = document.querySelector('#Proj-container');
+    const projectDiv = document.createElement('div');
+    const titleDiv = document.createElement('div');
+    const removeBtn = document.createElement('button');
+     
+    projectDiv.classList.add('project');
+    projectDiv.setAttribute('id', myProjects.indexOf(item));
+
+    titleDiv.textContent = item.titleP;
+    titleDiv.classList.add('titleProject');
+    projectDiv.appendChild(titleDiv);	
+
+    removeBtn.textContent = 'X'; 
+    removeBtn.setAttribute('id', 'removeBtn');
+    projectDiv.appendChild(removeBtn);
+    
+    projects.appendChild(projectDiv);
+
+    removeBtn.addEventListener('click', () => {
+        myProjects.splice(myProjects.indexOf(item),1);
+      //  setData()
+        renderProj();
+        formProj.reset();
+    });
+
+   
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+

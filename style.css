@@ -69,7 +69,16 @@ html{
 body{
     background-color: var(--background-color);
 }
+
+
 h1{
+  font-size: 2.5rem;
+  padding: 15px;
+  font-weight: 900;
+  text-align: left;
+  padding-left: 15px;
+}
+h2{
   font-size: 2.5rem;
   padding: 15px;
   font-weight: 900;
@@ -115,18 +124,33 @@ h1{
   /* Book and its contents */ 
   .task {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     border: none;
+    justify-content: space-around;
     border-radius: 25px;
-    height: 300px;
-    width: 250px;
+    height: 80px;
+    width: 750px;
     padding: 15px;
     margin: 20px;
     background-color: white;
   }
   
-  .title {
+  .project {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    border: none;
+    border-radius: 25px;
+    height: 90px;
+    width: 450px;
+    padding: 15px;
+    margin: 20px;
+    background-color: white;
+  }
+
+  .title , .titleProject {
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 20px;
@@ -147,7 +171,7 @@ h1{
   .doneBtn { 
     font-size: 20px;
     height: 35px;
-    width: 150px;
+    width: 100px;
     margin-bottom: 20px;
     border-radius: 10px;
     border: none;
@@ -156,13 +180,13 @@ h1{
   #removeBtn {
     font-size: 20px;
     height: 35px;
-    width: 150px;
+    width: 50px;
     border-radius: 10px;
     border: none;
     background-color: #d7d9da;
   }
   
-  #addBtn {
+  #addBtn, #addBtnProj {
     font-size: 20px;
     height: 55px;
     width: 150px;
@@ -176,9 +200,9 @@ h1{
   /* Modal popup box  https://www.w3schools.com/howto/howto_css_modals.asp */
   
   /* The Modal (background) */
-  input#title {
+  input#title , input#titleP {
     height: 30px;
-    width: 200px;
+    width: 400px;
     font-size: 20px;
     border:none;
     padding: 8px;
@@ -186,7 +210,7 @@ h1{
   }
   input#description {
     height: 30px;
-    width: 200px;
+    width: 400px;
     font-size: 20px;
     border:none;
     padding: 8px;
@@ -214,31 +238,16 @@ h1{
     
     transform: scale(2);
   }
-  #popUp {
-  
-    display: none; /* Hidden by default */
-    position: fixed; 
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); 
-    background-color: rgba(0,0,0,0.4);
-    font-size: 1.8rem;
-    font-weight: 600;
-   
-  }
+
   
   /* Modal Content/Box */
-  #form {
+  #form , #formProj{
     background-color: #fefefe;
     border-radius: 10px;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 15% auto;
     padding: 20px;
     border:none;
-    width: 30%; /* Could be more or less, depending on screen size */
+    width: 95%; 
     }
     
     /* The Close Button */

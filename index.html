@@ -11,12 +11,26 @@
     <title>Todo List</title>
 </head>
 <body>
-    <h1>Todo List</h1>
-           
+  
+    <h1> ¤¤ Todo List</h1>
+           <hr>
+           <h2>Projects</h2>
+           <form id='formProj'>
+            <input type='text' maxlength="28" id='titleP'  name='titleP' placeholder='Title of Project' >
+             <button type='submit' id='addBtnProj'>Add</button>
+     </form>
+     <div id='Proj-container'></div>
+
+ 
+    </div><!-- end all Proj-Container -->
+           <hr>
+
+           <h2>Tasks</h2>
         <form id='form'>
-               <input type='text' id='title'  name='title' placeholder='Title' value=""  >
-                <input type='text' id='description' name='description' placeholder='Description'  >
+               <input type='text' id='title' maxlength="28"  name='title' placeholder='Title' >
+                <input type='text' id='description'  maxlength="45" name='description' placeholder='Description'  >
                 <input  name="dueDate" type = "date" id='dueDate' placeholder='dueDate'  >
+                <br>
                 <label >Done: </label><input type='checkbox' id='done' name='done' value='yes'>
                 <button type='submit' id='addBtn'>Add</button>
         </form>
