@@ -11,36 +11,37 @@
     <title>Todo List</title>
 </head>
 <body>
+  <nav class="nav">
+    <h1> ✔✔ Todo List</h1>
+  </nav>
+<main>
+  <div class="leftPanel">
+               
+    <h2>Projects</h2>
+    <form id='formProj'>
+      <input type='text'  maxlength="20" id='titleP'  name='titleP'  placeholder='Title of Project' >
+      <button type='submit' id='addBtnProj'>+</button>
+</form>
+<div id='Proj-container'></div>
+
+
+</div> <!--end of leftPanel -->
+<div class="rightPanel">
   
-    <h1> ¤¤ Todo List</h1>
-           <hr>
-           <h2>Projects</h2>
-           <form id='formProj'>
-            <input type='text' maxlength="28" id='titleP'  name='titleP' placeholder='Title of Project' >
-             <button type='submit' id='addBtnProj'>Add</button>
-     </form>
-     <div id='Proj-container'></div>
-
+  <h2 class="contentH2Task">##title of task##</h2>
+  <form id='form'>
+         <input type='text' id='title' maxlength="10"  name='title' placeholder='Title' >
+          <input type='text' id='description'  maxlength="35" name='description' placeholder='Description'  >
+          <input  name="dueDate" type = "date" id='dueDate' placeholder='dueDate'  >
+          <br>
+          <label class="doneLabel" >Done: </label><input type='checkbox' id='done' name='done' value='yes'>
+          <button type='submit' id='addBtn'>  + Add</button>
+  </form> 
  
-    </div><!-- end all Proj-Container -->
-           <hr>
-
-           <h2>Tasks</h2>
-        <form id='form'>
-               <input type='text' id='title' maxlength="28"  name='title' placeholder='Title' >
-                <input type='text' id='description'  maxlength="45" name='description' placeholder='Description'  >
-                <input  name="dueDate" type = "date" id='dueDate' placeholder='dueDate'  >
-                <br>
-                <label >Done: </label><input type='checkbox' id='done' name='done' value='yes'>
-                <button type='submit' id='addBtn'>Add</button>
-        </form>
-       
-    <div id='Task-container'></div>
-
- 
-   </div><!-- end allContainer -->
-  
-   <div class="footer">
+<div id='Task-container'></div>
+</div><!-- end of rightPanel -->
+</main>
+  <div class="footer">
     <p class="info">Copyright © 2022 LS-Web Development 
         <a href="https://github.com/lswebdevelops/todo-list" target="_blank">
             <i class="fa-brands fa-github fa-1x"></i></a> </p>

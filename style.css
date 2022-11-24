@@ -34,7 +34,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
     line-height: 1;
-}
+    }
 ol, ul {
     list-style: none;
 }
@@ -66,10 +66,24 @@ html{
     position:relative; 
     min-height: 100%;
   }
-body{
-    background-color: var(--background-color);
-}
 
+main{
+  
+  display: flex;
+
+}
+.leftPanel{
+  width: 450px;
+  text-align: left;
+  padding: 4px;
+  border: solid firebrick 1px;
+  min-width: 300px;
+}
+.rightPanel{
+  width: 70%;
+  border: solid firebrick 1px;
+
+}
 
 h1{
   font-size: 2.5rem;
@@ -90,7 +104,7 @@ h2{
     padding: 15px;
     align-items: center;
     height:100px;
-    background-color: var(--nav-background-color);
+  
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
@@ -118,52 +132,48 @@ h2{
     flex-direction: row;
     flex-wrap: wrap;
   }
+  .task {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr 105px 50px;
+
+    height: 50px;
+    padding: 5px;
+    margin: 5px;
+
+  }
   
-  
+ 
   
   /* Book and its contents */ 
-  .task {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    border: none;
-    justify-content: space-around;
-    border-radius: 25px;
-    height: 80px;
-    width: 750px;
-    padding: 15px;
-    margin: 20px;
-    background-color: white;
-  }
+  
+
   
   .project {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     border: none;
     border-radius: 25px;
     height: 90px;
-    width: 450px;
-    padding: 15px;
-    margin: 20px;
-    background-color: white;
+    margin: 5px;
+    
   }
 
   .title , .titleProject {
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
-    margin-bottom: 20px;
+ 
   }
   
   .description {
-    font-size: 30px;
-    margin-bottom: 20px;
+    font-size: 1.2rem;
+  
   }
   
   .dueDate {
     font-size: 25px;
-    margin-bottom: 20px;
+    
   }
   
   button:focus {outline:0;}
@@ -183,18 +193,24 @@ h2{
     width: 50px;
     border-radius: 10px;
     border: none;
-    background-color: #d7d9da;
-  }
   
+  }
+ 
+
+
+
   #addBtn, #addBtnProj {
     font-size: 20px;
     height: 55px;
-    width: 150px;
     margin-top: 15px;
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 10px;
     border: none;
+    background-color: white;
+  }
+  #addBtnProj {
+    font-size: 35px;
   }
   
   /* Modal popup box  https://www.w3schools.com/howto/howto_css_modals.asp */
@@ -202,54 +218,52 @@ h2{
   /* The Modal (background) */
   input#title , input#titleP {
     height: 30px;
-    width: 400px;
     font-size: 20px;
-    border:none;
     padding: 8px;
-    border-bottom: solid 1px grey;
+    text-align: left;
+  
   }
   input#description {
     height: 30px;
-    width: 400px;
+   
     font-size: 20px;
     border:none;
     padding: 8px;
+    text-align: left;
 
     border-bottom: solid 1px grey;
   }
   input#dueDate {
     height: 30px;
-    width: 200px;
     padding: 8px;
     font-size: 20px;
     border:none;
     border-bottom: solid 1px grey;
+    text-align: left;
+
   }
   #done{
     transform: scale(1.5);
-  }
-  p label{
-    
-    font-size: 1.5rem;
-    padding-bottom: 5px;
-  }
-  input[type=checkbox] {
-    border:none;
-    
-    transform: scale(2);
-  }
+  } 
+  .doneLabel{
+    font-weight: 800;
+    font-size: 1.2rem;
+  } 
 
-  
-  /* Modal Content/Box */
-  #form , #formProj{
-    background-color: #fefefe;
+  #form {
+    margin: 5px;
     border-radius: 10px;
-    margin: 15% auto;
-    padding: 20px;
-    border:none;
-    width: 95%; 
-    }
     
+    height: 109px;
+    }
+    #formProj{
+    height: 109px;
+     display: flex;
+      min-width: 300px;
+      justify-content: space-around;
+      margin: 5px;
+      border-radius: 10px;
+       }
     /* The Close Button */
   .close {
     color: #aaa;
@@ -285,4 +299,10 @@ h2{
     
 }
  
+input{
+  outline: none;
+  border:none;
+  border-bottom: grey 1px solid;
+}
+
 
