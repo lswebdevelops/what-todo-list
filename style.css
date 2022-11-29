@@ -80,6 +80,7 @@ main{
   min-width: 300px;
 }
 .rightPanel{
+  /* display: none; */
   width: 70%;
   border: solid firebrick 1px;
 
