@@ -1,227 +1,204 @@
 
-// adding project 
-//button event listeners for create new task, add new task to page, close popup
-const addBtnProj = document.querySelector('#addBtnProj');
-addBtnProj.addEventListener('click', addProjToProjects);
 
-//Task Constructor
+// projects: 
+//button event listeners for create new project, add new project to dueDate, close projectPopUp
+const addProject = document.querySelector('#addProject');
+addProject.addEventListener('click', addProjToProjects);
+
+
+const newProjBtn = document.querySelector('#newProjBtn');
+newProjBtn.addEventListener('click', () => projectPopUp.style.display = 'block');
+
+const projectPopUp = document.getElementById('projectPopUp');
+const closeprojectPopUp = document.getElementsByTagName('span')[0];
+closeprojectPopUp.addEventListener('click', () => projectPopUpForm.style.display = 'none');
+
+
+
+
+//project Constructor
 class Project {
-    constructor(titleP) {
-     
-      this.titleP = formProj.titleP.value;          
-      }
+    constructor(title) {
+        this.title = projectForm.title.value;
+        
+    }
 }
 
-//creates task from Task Constructor, adds to myTasks
+
+//creates Project from Project Constructor, adds to myprojects
 
 let myProjects = [];
 let newProject;
 
-function addProjToProjects(){
+function addProjToProjects() {
     event.preventDefault();
-    newProject = new Project(titleP);
-    // prevent non letter or non numbers 
-    str = newProject.titleP;
-    function onlyLettersAndNumbers(str) {
-      return /^[A-Za-z0-9]*$/.test(str);
-    }
-    const string = onlyLettersAndNumbers(str)
-   if(string === false){
-    alert("Please type just letters and numbers")
-      
-   }else{
-    
-        //prevent users from creating an empty task:
-        if(newProject.titleP ==='' ||newProject.titleP ===' ' ){
-          alert("Please type a valid project title")
-        }
-        else{
-          myProjects.push(newProject);
-          renderProj();
-        }
-   }
+    projectPopUp.style.display = "none";
 
-  
-   
+    newProject = new Project(title);
+    myProjects.push(newProject);
+    renderProjects();
+    projectForm.reset();
 }
 
+//creates a visual Project
+function renderProjects() {
+    const display = document.getElementById('Projects-container');
+    const Projects = document.querySelectorAll('.Project');
+    Projects.forEach(Project => display.removeChild(Project));
 
-function renderProj(){
-    const display = document.getElementById('Proj-container');
-    const projects = document.querySelectorAll('.project');
-    projects.forEach(project => display.removeChild(project));
+    for (let i = 0; i < myProjects.length; i++) {
+        createProject(myProjects[i]);
 
-    for (let i=0; i<myProjects.length; i++){
-      createProject(myProjects[i]);
+        console.log(myProjects[i]);
+
     }
 }
 
-// creates project DOM elements for rendering
+// creates Project DOM elements for rendering
 
 function createProject(item) {
-    const projects = document.querySelector('#Proj-container');
-    const projectDiv = document.createElement('div');
+    const myprojects = document.querySelector('#Projects-container');
+    const ProjectDiv = document.createElement('div');
     const titleDiv = document.createElement('div');
     const removeBtn = document.createElement('button');
-    const gotToTaskBtn = document.createElement('button');
-         
-    projectDiv.classList.add('project');
-    projectDiv.setAttribute('id', myProjects.indexOf(item));
-
-    titleDiv.textContent = item.titleP;
-    titleDiv.classList.add('titleProject');
-    projectDiv.appendChild(titleDiv);	
-
-    //adding a remove button : 
-    removeBtn.textContent = 'X'; 
-    removeBtn.setAttribute('id', 'removeBtn');
-    projectDiv.appendChild(removeBtn);
-    console.log();
+  
 
 
-    projects.appendChild(projectDiv);
+    ProjectDiv.classList.add('Project');
+    ProjectDiv.setAttribute('id', myProjects.indexOf(item));
+
+    titleDiv.textContent = item.title;
+    titleDiv.classList.add('title');
+    ProjectDiv.appendChild(titleDiv);
+
+    removeBtn.textContent = 'X';
+    removeBtn.setAttribute('id', 'removeProjBtn');
+    ProjectDiv.appendChild(removeBtn);
+
+    myprojects.appendChild(ProjectDiv);
 
     removeBtn.addEventListener('click', () => {
-        myProjects.splice(myProjects.indexOf(item),1);
-       renderProj();
-        formProj.reset();
+        myProjects.splice(myProjects.indexOf(item), 1);
+       
+        renderProjects();
     });
 
-
-// adding a go-to-task-button: 
-gotToTaskBtn.textContent = 'Go to Tasks'; 
-gotToTaskBtn.setAttribute('id', 'gotToTaskBtn');
-    projectDiv.appendChild(gotToTaskBtn);
-
-    gotToTaskBtn.addEventListener('click', () => {
-      console.log(`task have been shown`);
-      
-      const addToRightPanel = document.querySelector('.rightPanel');
-// adding listener for creating a container for the tasks
-      function taskListener(){
-        const element  = document.createElement('div');
-        element.innerText = 'Project name here';
-        element.classList.add('tasksAddFromProject');
-        return element;
-      }
-      addToRightPanel.appendChild(taskListener());
-    });
+    
+};
 
 
-  };
 
-// **********************************************************************
+// tasks: 
+//button event listeners for create new Task, add new Task to dueDate, close taskPopUp
+const addTask = document.querySelector('#addTask');
+addTask.addEventListener('click', addTaskToProjects);
 
-// adding a task: 
 
-function addingTaskIntoProject(){
-//button event listeners for create new task, add new task to page, close popup
-const addBtn = document.querySelector('#addBtn');
-addBtn.addEventListener('click', addTaskToTasks);
+const newTaskBtn = document.querySelector('#newTaskBtn');
+newTaskBtn.addEventListener('click', () => taskPopUpForm.style.display = 'block');
+
+const taskPopUpForm = document.getElementById('taskPopUp');
+const closetaskPopUp = document.getElementsByTagName('span')[0];
+closetaskPopUp.addEventListener('click', () => taskPopUpForm.style.display = 'none');
+
+
+
 
 //Task Constructor
 class Task {
     constructor(title, description, dueDate, done) {
-      this.title = form.title.value;          
-      this.description = form.description.value; 
-      this.dueDate = form.dueDate.value; 
-      this.done = form.done.checked; 
+        this.title = taskForm.title.value;
+        this.description = taskForm.description.value;
+        this.dueDate = taskForm.dueDate.value;
+        this.done = taskForm.done.checked;
+
     }
 }
 
-//creates task from Task Constructor, adds to myTasks
+
+//creates Task from Task Constructor, adds to mytasks
 
 let myTasks = [];
 let newTask;
 
-function addTaskToTasks(){
+function addTaskToProjects() {
     event.preventDefault();
+    taskPopUpForm.style.display = "none";
+
     newTask = new Task(title, description, dueDate, done);
-    //prevent users from creating an empty task:
-  if(newTask.title ==='' ||newTask.title ===' ' ){
-    alert("Please type a valid title")
-  }else if( newTask.description === '' ||newTask.description === ' ' ){
-    alert("Please type a valid description" );
-  }else if(newTask.dueDate === '' || newTask.dueDate === ' '){
-    alert("Please give a date");
-  }
-  else{
     myTasks.push(newTask);
     render();
-    form.reset();
-  }
-   
+    taskForm.reset();
 }
 
-//creates a visual task
-function render(){
-    const display = document.getElementById('Task-container');
-    const tasks = document.querySelectorAll('.task');
-    tasks.forEach(task => display.removeChild(task));
+//creates a visual Task
+function render() {
+    const display = document.getElementById('Tasks-container');
+    const Tasks = document.querySelectorAll('.Task');
+    Tasks.forEach(Task => display.removeChild(Task));
 
-    for (let i=0; i<myTasks.length; i++){
-      createTask(myTasks[i]);
+    for (let i = 0; i < myTasks.length; i++) {
+        createTask(myTasks[i]);
+
+        console.log(myTasks[i]);
+
     }
 }
 
-// creates task DOM elements for rendering
+// creates Task DOM elements for rendering
 
 function createTask(item) {
-    const tasks = document.querySelector('#Task-container');
-    const taskDiv = document.createElement('div');
+    const mytasks = document.querySelector('#Tasks-container');
+    const TaskDiv = document.createElement('div');
     const titleDiv = document.createElement('div');
-    const descriptionDiv = document.createElement('div');
-    const dueDateDiv = document.createElement('div');
+    const descDiv = document.createElement('div');
+    const dueDiv = document.createElement('div');
     const removeBtn = document.createElement('button');
     const doneBtn = document.createElement('button');
-    
-    
-    taskDiv.classList.add('task');
-    taskDiv.setAttribute('id', myTasks.indexOf(item));
+
+
+    TaskDiv.classList.add('Task');
+    TaskDiv.setAttribute('id', myTasks.indexOf(item));
 
     titleDiv.textContent = item.title;
     titleDiv.classList.add('title');
-    taskDiv.appendChild(titleDiv);
+    TaskDiv.appendChild(titleDiv);
 
-    descriptionDiv.textContent = item.description;
-    descriptionDiv.classList.add('description');
-    taskDiv.appendChild(descriptionDiv);
+    descDiv.textContent = item.description;
+    descDiv.classList.add('description');
+    TaskDiv.appendChild(descDiv);
 
-    dueDateDiv.textContent = item.dueDate;
-    dueDateDiv.classList.add('dueDate');
-    taskDiv.appendChild(dueDateDiv);
+    dueDiv.textContent = item.dueDate;
+    dueDiv.classList.add('dueDate');
+    TaskDiv.appendChild(dueDiv);
 
-    doneBtn.classList.add('doneBtn')    
-    taskDiv.appendChild(doneBtn);
-    if(item.done===false){
+    doneBtn.classList.add('doneBtn')
+    TaskDiv.appendChild(doneBtn);
+    if (item.done === false) {
         doneBtn.textContent = 'Not done';
         doneBtn.style.backgroundColor = 'hsl(0deg 100% 81%)';
-    }else{
-        doneBtn.textContent = 'Done';
-        doneBtn.style.backgroundColor = 'hsl(118deg 100% 81%)' ;
+    } else {
+        doneBtn.textContent = 'done';
+        doneBtn.style.backgroundColor = 'hsl(118deg 100% 81%)';
     }
-		
 
-    removeBtn.textContent = 'X'; 
+
+    removeBtn.textContent = 'X';
     removeBtn.setAttribute('id', 'removeBtn');
-    taskDiv.appendChild(removeBtn);
-    
-    tasks.appendChild(taskDiv);
+    TaskDiv.appendChild(removeBtn);
+
+    mytasks.appendChild(TaskDiv);
 
     removeBtn.addEventListener('click', () => {
-        myTasks.splice(myTasks.indexOf(item),1);
-      //  setData()
+        myTasks.splice(myTasks.indexOf(item), 1);
+        //  setData()
         render();
     });
 
-    //add toggle ability to each task 'done' button on click
-    doneBtn.addEventListener('click', () => { 
-        item.done = !item.done; 
-   //     setData(); 
+    //add toggle ability to each Task 'done' button on click
+    doneBtn.addEventListener('click', () => {
+        item.done = !item.done;
+        //     setData(); 
         render();
-    }); 
+    });
 };
-}
-
-
-

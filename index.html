@@ -5,32 +5,73 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/8e7c30ddfb.js" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" href="images/lsfavicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="lsfavicon.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
-    <title>Todo List</title>
+    <title>What-To-do List</title>
 </head>
 <body>
-  <nav class="nav">
-    <h1> ✔✔ Todo List</h1>
-  </nav>
-<main>
-  <div class="leftPanel">
-               
-    <h2>Projects</h2>
-    <form id='formProj'>
-      <input type='text'  maxlength="20" id='titleP'  name='titleP'  placeholder='Title of Project' >
-      <button type='submit' id='addBtnProj'>+</button>
-</form>
-<div id='Proj-container'></div>
-</div> <!--end of leftPanel -->
-<div class="rightPanel"></div>
-</main>
+    <h1>To-do List</h1>
+
+    <div id="btnContainers">
+        <div id='newProjBtn-Container'>
+            <button id='newProjBtn'>+ New Project</button>         
+        </div>
+        <div id='newTaskBtn-Container'>
+            <button id='newTaskBtn'>+ New Task</button>
+     </div>
+    </div>
+
+     <div id="projectPopUp">
+        <form id='projectForm' action='/script.js'>
+            <span class="close">&times;</span>
+            <ledgend>New Project</ledgend>
+            <div> 
+                <p><input type='text' id='title' maxlength="40" name='title' placeholder='Title' value="Project"></p>
+                            
+            </div>
+            
+            <button type='submit' form='projectForm' id='addProject'>Add</button>
+        </form>
+
+    </div>
+
+     <div id="taskPopUp">
+        <form id='taskForm' action='/script.js'>
+            <span class="close">&times;</span>
+            <ledgend>New Task</ledgend>
+            <div id='taskTextInput'> 
+                <p><input type='text' id='title' maxlength="40" name='title' placeholder='Title' value="Task"></p>
+                <p><input type='text' id='description'  maxlength="40" name='description' placeholder='description' value="Description"></p>
+                <p>
+         
+             <input name="dueDate" type = "date"  id='dueDate' name='dueDate' placeholder='dueDate' value='1900-01-01'/></p>
+            </div>
+            <div id='checkBox'>
+                <p><label >Done: </label><input type='checkbox' id='done' name='done' checked></p>
+            </div>
+            <button type='submit' form='taskForm' id='addTask'>Add</button>
+        </form>
+    </div>
+
+    
+    
+<hr>
+            <div class="container">
+                <div id='Projects-container'></div>
+                <div id='Tasks-container'></div>
+            </div>
+       
+
+
   <div class="footer">
-    <p class="info">Copyright © 2022 LS-Web Development 
-        <a href="https://github.com/lswebdevelops/todo-list" target="_blank">
-            <i class="fa-brands fa-github fa-1x"></i></a> </p>
-</div><!-- end footer -->
+        <p class="info">Copyright © 2022 LS-Web Development 
+            <a href="https://github.com/lswebdevelops/todo-list" target="_blank">
+                <i class="fa-brands fa-github fa-1x"></i></a> </p>
+    </div><!-- end footer -->
+   </div><!-- end allContainer -->
+  
+  
   
 </body>
 </html>
